@@ -1,0 +1,113 @@
+// pages/api/image/mood-confirm.js
+import { ImageResponse } from '@vercel/og';
+
+export const config = {
+  runtime: 'edge',
+};
+
+const MOODS = {
+  'happy': { emoji: '😊', name: 'Happy', color: '#FFD700', bg: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)' },
+  'excited': { emoji: '🤩', name: 'Excited', color: '#FF6B6B', bg: 'linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%)' },
+  'calm': { emoji: '😌', name: 'Calm', color: '#4ECDC4', bg: 'linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%)' },
+  'thoughtful': { emoji: '🤔', name: 'Thoughtful', color: '#95A5A6', bg: 'linear-gradient(135deg, #95A5A6 0%, #7F8C8D 100%)' },
+  'tired': { emoji: '😴', name: 'Tired', color: '#9B59B6', bg: 'linear-gradient(135deg, #9B59B6 0%, #8E44AD 100%)' },
+  'anxious': { emoji: '😰', name: 'Anxious', color: '#E74C3C', bg: 'linear-gradient(135deg, #E74C3C 0%, #C0392B 100%)' },
+  'grateful': { emoji: '🙏', name: 'Grateful', color: '#2ECC71', bg: 'linear-gradient(135deg, #2ECC71 0%, #27AE60 100%)' },
+  'creative': { emoji: '🎨', name: 'Creative', color: '#F39C12', bg: 'linear-gradient(135deg, #F39C12 0%, #E67E22 100%)' },
+  'motivated': { emoji: '💪', name: 'Motivated', color: '#3498DB', bg: 'linear-gradient(135deg, #3498DB 0%, #2980B9 100%)' }
+};
+
+export default function handler(req) {
+  const { searchParams } = new URL(req.url);
+  const moodId = searchParams.get('mood') || 'happy';
+  const mood = MOODS[moodId] || MOODS.happy;
+
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          background: mood.bg,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontFamily: 'system-ui, sans-serif',
+          color: 'white',
+          textAlign: 'center',
+          padding: '40px',
+        }}
+      >
+        <div
+          style={{
+            fontSize: '200px',
+            marginBottom: '30px',
+            filter: 'drop-shadow(4px 4px 8px rgba(0,0,0,0.3))',
+          }}
+        >
+          {mood.emoji}
+        </div>
+        
+        <div
+          style={{
+            fontSize: '64px',
+            fontWeight: 'bold',
+            marginBottom: '20px',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
+          }}
+        >
+          You're feeling {mood.name}!
+        </div>
+        
+        <div
+          style={{
+            fontSize: '28px',
+            opacity: 0.9,
+            marginBottom: '40px',
+            backgroundColor: 'rgba(255,255,255,0.2)',
+            padding: '20px 40px',
+            borderRadius: '50px',
+            backdropFilter: 'blur(10px)',
+          }}
+        >
+          Ready to share this mood with the world?
+        </div>
+        
+        <div
+          style={{
+            display: 'flex',
+            gap: '30px',
+            fontSize: '20px',
+            alignItems: 'center',
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: 'rgba(255,255,255,0.3)',
+              padding: '15px 30px',
+              borderRadius: '30px',
+              border: '2px solid rgba(255,255,255,0.5)',
+            }}
+          >
+            📱 Cast This Mood
+          </div>
+          <div
+            style={{
+              backgroundColor: 'rgba(255,255,255,0.1)',
+              padding: '15px 30px',
+              borderRadius: '30px',
+              border: '2px solid rgba(255,255,255,0.3)',
+            }}
+          >
+            🔄 Choose Different
+          </div>
+        </div>
+      </div>
+    ),
+    {
+      width: 1200,
+      height: 630,
+    }
+  );
+}
