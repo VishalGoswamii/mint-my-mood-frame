@@ -58,14 +58,14 @@ function generateInitialFrame() {
         
         <!-- Farcaster Frame Meta Tags -->
         <meta property="fc:frame" content="vNext" />
-        <meta property="fc:frame:image" content="https://your-domain.com/api/image/welcome" />
+        <meta property="fc:frame:image" content="https://mint-my-mood-frame.vercel.app/api/image/welcome" />
         <meta property="fc:frame:button:1" content="🎭 Track My Mood" />
-        <meta property="fc:frame:post_url" content="https://your-domain.com/api/frame" />
+        <meta property="fc:frame:post_url" content="https://mint-my-mood-frame.vercel.app/api/frame" />
         
         <!-- Open Graph for sharing -->
         <meta property="og:title" content="🎭 Mint My Mood" />
         <meta property="og:description" content="Track and share your daily moods on Farcaster!" />
-        <meta property="og:image" content="https://your-domain.com/api/image/welcome" />
+        <meta property="og:image" content="https://mint-my-mood-frame.vercel.app/api/image/welcome" />
       </head>
       <body>
         <h1>🎭 Mint My Mood</h1>
@@ -82,12 +82,12 @@ function generateMoodSelectionFrame() {
       <head>
         <meta charset="utf-8">
         <meta property="fc:frame" content="vNext" />
-        <meta property="fc:frame:image" content="https://your-domain.com/api/image/mood-grid" />
+        <meta property="fc:frame:image" content="https://mint-my-mood-frame.vercel.app/api/image/mood-grid" />
         <meta property="fc:frame:button:1" content="😊 Happy" />
         <meta property="fc:frame:button:2" content="🤩 Excited" />
         <meta property="fc:frame:button:3" content="😌 Calm" />
         <meta property="fc:frame:button:4" content="🤔 Thoughtful" />
-        <meta property="fc:frame:post_url" content="https://your-domain.com/api/frame" />
+        <meta property="fc:frame:post_url" content="https://mint-my-mood-frame.vercel.app/api/frame" />
       </head>
       <body>
         <h1>How are you feeling?</h1>
@@ -106,11 +106,11 @@ function generateMoodConfirmationFrame(mood, fid) {
       <head>
         <meta charset="utf-8">
         <meta property="fc:frame" content="vNext" />
-        <meta property="fc:frame:image" content="https://your-domain.com/api/image/mood-confirm?mood=${mood.id}" />
+        <meta property="fc:frame:image" content="https://mint-my-mood-frame.vercel.app/api/image/mood-confirm?mood=${mood.id}" />
         <meta property="fc:frame:button:1" content="📱 Cast This Mood" />
         <meta property="fc:frame:button:2" content="🔄 Choose Different" />
         <meta property="fc:frame:state" content="${mood.id}" />
-        <meta property="fc:frame:post_url" content="https://your-domain.com/api/frame" />
+        <meta property="fc:frame:post_url" content="https://mint-my-mood-frame.vercel.app/api/frame" />
       </head>
       <body>
         <h1>You're feeling ${mood.name} ${mood.emoji}</h1>
@@ -139,10 +139,10 @@ function generateSuccessFrame(moodId, fid) {
       <head>
         <meta charset="utf-8">
         <meta property="fc:frame" content="vNext" />
-        <meta property="fc:frame:image" content="https://your-domain.com/api/image/success?mood=${moodId}" />
+        <meta property="fc:frame:image" content="https://mint-my-mood-frame.vercel.app/api/image/success?mood=${moodId}" />
         <meta property="fc:frame:button:1" content="🎭 Track Another Mood" />
         <meta property="fc:frame:button:2" content="📊 View History" />
-        <meta property="fc:frame:post_url" content="https://your-domain.com/api/frame" />
+        <meta property="fc:frame:post_url" content="https://mint-my-mood-frame.vercel.app/api/frame" />
       </head>
       <body>
         <h1>Mood Shared Successfully! 🎉</h1>
